@@ -33,10 +33,7 @@ export class StarshipsDetailComponent implements OnInit {
     );
     this.getDetailPilots();
   }
-  getCharacter(character: any) {
-    let id = character.url.match('[0-9]+')[0];
-    return id;
-  }
+
 
   getDetailPilots() {
     return this.route.params

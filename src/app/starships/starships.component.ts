@@ -30,9 +30,6 @@ export class StarshipsComponent implements OnInit {
     this.starShipsService.getStarships().subscribe((starships: any)=>this.formulario= starships);
   }
 
-  getStarship(starship: any) {
-    let id = starship.url.match('[0-9]+')[0];
-    return id;
-  }
+
 
 }

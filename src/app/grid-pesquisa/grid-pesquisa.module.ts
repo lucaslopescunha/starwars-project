@@ -1,3 +1,4 @@
+import { GridUrlIdPipe } from './grid-url-id.pipe';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -6,15 +7,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
+    RouterModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule,
-    RouterModule
+    ReactiveFormsModule
   ],
   declarations: [
-    GridPesquisaComponent
+    GridPesquisaComponent,
+    GridUrlIdPipe
   ],
-  exports: [GridPesquisaComponent,RouterModule ]
+  exports: [
+    GridPesquisaComponent,
+    RouterModule
+  ]
 })
 export class GridPesquisaModule { }
 

@@ -13,12 +13,12 @@ import { StarshipsModule } from '../starships/starships.module';
 
 @NgModule({
   imports: [
+    RouterModule,
     CommonModule,
     FormsModule,
     CharactersRoutingModule,
     GridPesquisaModule,
-    ReactiveFormsModule,
-    HttpModule
+    ReactiveFormsModule     
   ],
   exports: [
     CharactersComponent,

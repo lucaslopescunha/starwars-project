@@ -18,7 +18,7 @@ export class CharactersComponent implements OnInit {
   inscricao: Subscription;
   formulario: any;
   isActive: boolean;
-public  constructor(
+  public constructor(
     private charactersService: CharactersService,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,

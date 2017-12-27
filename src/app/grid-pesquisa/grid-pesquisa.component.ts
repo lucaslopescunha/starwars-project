@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class GridPesquisaComponent implements OnInit {
 
-  @Input('lista') listResults: any[];
+  @Input('lista') lista: any[];
 
   @Input() rota: any;
 
@@ -17,10 +17,6 @@ export class GridPesquisaComponent implements OnInit {
   ngOnInit() {
   }
 
-  getUrl(result: any) {
 
-    let id = result.url.match('[0-9]+')[0];
-    return id;
-  }
 
 }
