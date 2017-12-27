@@ -1,0 +1,22 @@
+<h2>Starship</h2>
+
+<p>Name: {{ starship?.name }}</p>
+<p>Model: {{ starship?.model }}</p>
+<p>Cost in credits: {{ starship?.cost_in_credits }}</p>
+<p>Length: {{ starship?.length }}</p>
+<p>Max Atmosphering Speed: {{ starship?.max_atmosphering_speed }}</p>
+<p>Crew: {{ starship?.crew }}</p>
+<p>Passengers: {{ starship?.passengers }}</p>
+<p>Cargo Capacity: {{ starship?.cargo_capacity }}</p>
+<p>Consumables: {{ starship?.consumables }}</p>
+<p>Hyperdrive Rating: {{ starship?.hyperdrive_rating }}</p>
+<p>MGLT: {{ starship?.MGLT }}</p>
+<p>Starship Class: {{ starship?.starship_class }} </p>
+<div class="panel panel-collapse panel-primary">
+    <div class="panel-heading">
+        <h4>Pilots</h4>
+    </div>
+    <div class="panel-body">
+        <grid-pesquisa [lista]="pilots" [rota]="rota"></grid-pesquisa>
+    </div>
+</div>
