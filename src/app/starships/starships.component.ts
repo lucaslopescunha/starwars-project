@@ -16,7 +16,7 @@ export class StarshipsComponent implements OnInit {
   constructor(
     private starShipsService: StarshipsService,
     private http: Http
-  ){}
+  ) { }
 
   ngOnInit() {
     this.formulario = {
@@ -27,7 +27,11 @@ export class StarshipsComponent implements OnInit {
 
     };
 
-    this.starShipsService.getStarships().subscribe((starships: any)=>this.formulario= starships);
+    this.starShipsService.getStarships().subscribe((starships: any) => {
+      this.formulario = starships;
+      console.log(starships);
+    }
+    );
   }
 
 

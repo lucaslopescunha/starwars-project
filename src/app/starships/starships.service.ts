@@ -8,42 +8,38 @@ import { Observable } from 'rxjs/Observable';
 import { mergeMap } from 'rxjs/operators/mergeMap';
 import { forkJoin } from 'rxjs/observable/forkJoin';
 
+import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class StarshipsService {
   private url: string = "https://swapi.co/api/";
 
 
   constructor(
-    private http: Http) {
+    private http: HttpClient) {
 
   }
 
-
-  getStarships() {
-    return this.http.get(this.url + "starships/")
-      .map(dados => dados.json());
+  getStarships(): Observable<any> {
+    return this.http.get(this.url + "starships/");
 
   }
 
   getStarship(id) {
-    return this.http.get(this.url + "starships/" + id + "/")
-      .map(dados => dados.json());
-
+    return this.http.get(this.url + "starships/" + id + "/");
   }
+
   getPilots(id) {
-    return this.http.get(this.url + "people/" + id)
-      .map(res => res.json());
+    return this.http.get(this.url + "people/" + id);
   }
 
   getDetails(id: number) {
 
-    return this.http.get('https://swapi.co/api/starships/' + id+'/')
+    return this.http.get('https://swapi.co/api/starships/' + id + '/')
       .pipe(
       mergeMap((starship: Response) => {
-        const pilotPromisses = this.convertUrlIntoPromise(starship.json().pilots);
+        const pilotPromisses = this.convertUrlIntoPromise(starship.pilots);
         return forkJoin(pilotPromisses).map(result => {
-          const pilots = result.map(resultPilots => resultPilots.json());
-          return pilots;
+          return result;
         });
       }));
   }

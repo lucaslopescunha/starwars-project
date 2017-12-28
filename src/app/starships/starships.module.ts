@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StarshipsComponent } from './starships.component';
 import { StarshipsDetailComponent } from './starships-detail/starships-detail.component';
 import { StarshipsService } from './starships.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { StarshipsService } from './starships.service';
     CommonModule,
     StarshipsRoutingModule,
     GridPesquisaModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   exports: [ StarshipsComponent ],
   declarations: [

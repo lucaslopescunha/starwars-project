@@ -31,6 +31,7 @@ export class StarshipsDetailComponent implements OnInit {
         });
       }
     );
+    console.log(this.starship);
     this.getDetailPilots();
   }
 
@@ -42,7 +43,7 @@ export class StarshipsDetailComponent implements OnInit {
       .subscribe(
         (pilot: any[]) => {
           this.pilots = pilot;
-          console.log(pilot);
+        
         },
         (error) => {
           this.pilots = [];
