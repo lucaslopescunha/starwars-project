@@ -6,12 +6,11 @@ import { MockBackend } from '@angular/http/testing';
 
 import { StarshipsService } from './starships.service';
 import { Injector, ReflectiveInjector } from '@angular/core';
-import { Starships } from './starships';
 
 describe('StarshipsService', () => {
   let starshipsService: StarshipsService;
   let url: string = "https://swapi.co/api/";
-  let starship: Starships;
+  let starship: any;
   let httpMock: any;
 
   beforeEach(() => {
@@ -21,8 +20,6 @@ describe('StarshipsService', () => {
         StarshipsService
       ]
     });
-
-
 
     httpMock = TestBed.get(HttpTestingController);
     starshipsService = new StarshipsService(httpMock);

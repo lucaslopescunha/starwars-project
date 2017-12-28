@@ -15,9 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule, 
     CommonModule,
     StarshipsRoutingModule,
-    GridPesquisaModule,
-    HttpModule,
-    HttpClientModule
+    GridPesquisaModule
   ],
   exports: [ StarshipsComponent ],
   declarations: [

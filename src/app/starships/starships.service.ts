@@ -1,3 +1,4 @@
+import { Starship } from './starship';
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Subscription } from 'rxjs/Subscription';
@@ -36,7 +37,7 @@ export class StarshipsService {
 
     return this.http.get('https://swapi.co/api/starships/' + id + '/')
       .pipe(
-      mergeMap((starship: Response) => {
+      mergeMap((starship: Starship) => {
         const pilotPromisses = this.convertUrlIntoPromise(starship.pilots);
         return forkJoin(pilotPromisses).map(result => {
           return result;

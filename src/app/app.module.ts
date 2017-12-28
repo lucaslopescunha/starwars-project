@@ -9,6 +9,7 @@ import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { CharactersComponent } from './characters/characters.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,13 +18,13 @@ import { CharactersComponent } from './characters/characters.component';
 
   ],
   imports: [
-
     AppRoutingModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule 
+    HttpClientModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
