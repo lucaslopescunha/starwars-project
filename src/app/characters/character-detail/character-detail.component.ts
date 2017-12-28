@@ -30,8 +30,9 @@ export class CharacterDetailComponent implements OnInit {
         let char = this.service.getCharacter(id);
         let specie = this.service.getSpecies(id);
         forkJoin([char, specie]).subscribe(res => {
+          res[0]['species'] = res[1]['name'];
           this.character = res[0];
-        });
+       });
 
       }
     );
