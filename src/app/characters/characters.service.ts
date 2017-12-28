@@ -29,7 +29,8 @@ export class CharactersService {
   }
 
   getCharacter(link) {
-    return this.http.get(this.url + "people/" + link);
+    console.log(this.url + "people/" + link+"/");
+    return this.http.get(this.url + "people/" + link+"/");
 
   }
 

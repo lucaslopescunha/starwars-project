@@ -4,7 +4,6 @@ import { CharactersService } from './characters.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Character } from './character';
-import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-characters',
@@ -21,7 +20,6 @@ export class CharactersComponent implements OnInit {
   public constructor(
     private charactersService: CharactersService,
     private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
     private router: Router) {
     this.isActive = false;
   }

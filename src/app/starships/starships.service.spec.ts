@@ -28,13 +28,25 @@ describe('StarshipsService', () => {
 
   it('should get the data successful', () => {
     starshipsService.getStarship(10).subscribe((star :any) => {
-      expect(star['name']).toBe('Luke Skywalker');
+      expect(star['name']).toBe('Millennium Falcon');
     });
     const req = httpMock.expectOne(`https://swapi.co/api/starships/10/`, 'call to api');
     expect(req.request.method).toBe('GET');
-
     req.flush({
-      name: 'Luke Skywalker'
+      name: 'Millennium Falcon'
+    });
+
+    httpMock.verify();
+  });
+
+  it('should get the data successful', () => {
+    starshipsService.getPilots(10).subscribe((star :any) => {
+      expect(star['name']).toBe('Obi-Wan Kenobi');
+    });
+    const req = httpMock.expectOne(`https://swapi.co/api/people/10/`, 'call to api');
+    expect(req.request.method).toBe('GET');
+    req.flush({
+      name: 'Obi-Wan Kenobi'
     });
 
     httpMock.verify();

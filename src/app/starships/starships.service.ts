@@ -30,12 +30,12 @@ export class StarshipsService {
   }
 
   getPilots(id) {
-    return this.http.get(this.url + "people/" + id);
+    return this.http.get(this.url + "people/" + id+ "/");
   }
 
   getDetails(id: number) {
 
-    return this.http.get('https://swapi.co/api/starships/' + id + '/')
+    return this.http.get(this.url + 'starships/' + id + '/')
       .pipe(
       mergeMap((starship: Starship) => {
         const pilotPromisses = this.convertUrlIntoPromise(starship.pilots);
@@ -46,7 +46,6 @@ export class StarshipsService {
   }
 
   private convertUrlIntoPromise(urls: string[]) {
-    console.log("conv");
     return urls.map(url => this.http.get(url));
   }
 }
