@@ -11,28 +11,33 @@ describe('StarshipsService', () => {
   let starshipsService: StarshipsService;
   let url: string = "https://swapi.co/api/";
   let starship: any;
-  let httpMock: any;
+  let httpMock: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, TranslateModule.forRoot()],
+      imports: [HttpClientTestingModule],
       providers: [
         StarshipsService
       ]
     });
 
+    starshipsService = TestBed.get(StarshipsService);
     httpMock = TestBed.get(HttpTestingController);
-    starshipsService = new StarshipsService(httpMock);
  
   });
 
-  it('should be found', () => {
-    starshipsService.getStarship(10).subscribe(star => {
-      starship = star;
+  it('should get the data successful', () => {
+    starshipsService.getStarship(10).subscribe((star :any) => {
+      expect(star['name']).toBe('Luke Skywalker');
     });
-    expect(starship).toBeDefined();
-    //console.log("oi"+starship.url); 
-    // expect(starship.url).toEqual(url + 'starships/10/');
+    const req = httpMock.expectOne(`https://swapi.co/api/starships/10/`, 'call to api');
+    expect(req.request.method).toBe('GET');
+
+    req.flush({
+      name: 'Luke Skywalker'
+    });
+
+    httpMock.verify();
   });
 });
 
