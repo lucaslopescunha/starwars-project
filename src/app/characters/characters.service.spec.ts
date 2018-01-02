@@ -37,4 +37,55 @@ describe('CharactersService', () => {
 
     httpMock.verify();
   });
+
+  it('should get the data successful', () => {
+    const species = 
+      {
+        count: '2',
+
+        results: [
+          {
+            name: "Luke Skywalker",
+            height: "172"
+          },
+          {
+            name: "C-3PO",
+            height: '167'
+          }]
+      };
+    charactersService.getCharacters().subscribe(char => {
+      expect(char['count']).toBe('2');
+      expect(char['results'][0]['name']).toBe(species['results'][0]['name']);
+    });
+    const req = httpMock.expectOne(url + `people/?page=1`, 'call to api');
+    expect(req.request.method).toBe('GET');
+    req.flush({
+      count: '2',
+
+      results: [
+        {
+          name: "Luke Skywalker",
+          height: "172"
+        },
+        {
+          name: "C-3PO",
+          height: 167
+        }]
+    });
+
+    httpMock.verify();
+  });
+  it('should get the data successful', () => {
+    charactersService.getSpecies(10).subscribe((star: any) => {
+      expect(star['name']).toBe('Sullustan');
+    });
+    const req = httpMock.expectOne(url + `species/10`, 'call to api');
+    expect(req.request.method).toBe('GET');
+    req.flush({
+      name: 'Sullustan'
+
+    });
+
+    httpMock.verify();
+  });
 });
