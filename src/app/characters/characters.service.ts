@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { Character } from './character';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class CharactersService {
@@ -19,17 +20,16 @@ export class CharactersService {
 
   }
 
-  getSpecies(id) {
+  getSpecies(id) : Observable<any> {
     return this.http.get(this.url + "species/" + id);
   }
 
-  getCharacters() {
+  getCharacters(): Observable<any> {
     return this.http.get(this.url + "people/?page=1");
 
   }
 
-  getCharacter(link) {
-    console.log(this.url + "people/" + link+"/");
+  getCharacter(link) : Observable<any>{
     return this.http.get(this.url + "people/" + link+"/");
 
   }
@@ -50,8 +50,6 @@ export class CharactersService {
     return formulario;
   }
 
-  recebe(dados) {
-    //console.log(dados);
-  }
+
 
 }

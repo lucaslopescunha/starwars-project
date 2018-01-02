@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpTestingController,HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 import { CharactersService } from "./characters.service";
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -15,21 +15,21 @@ describe('CharactersService', () => {
         ReactiveFormsModule, FormsModule
       ],
       providers: [
-       CharactersService
+        CharactersService
       ]
     });
 
     charactersService = TestBed.get(CharactersService);
     httpMock = TestBed.get(HttpTestingController);
- 
+
   });
 
 
   it('should get the data successful', () => {
-    charactersService.getCharacter(10).subscribe((star :any) => {
+    charactersService.getCharacter(10).subscribe((star: any) => {
       expect(star['name']).toBe('Luke');
     });
-    const req = httpMock.expectOne(url+`people/10/`, 'call to api');
+    const req = httpMock.expectOne(url + `people/10/`, 'call to api');
     expect(req.request.method).toBe('GET');
     req.flush({
       name: 'Luke'

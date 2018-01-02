@@ -25,15 +25,15 @@ export class StarshipsService {
 
   }
 
-  getStarship(id) {
+  getStarship(id) : Observable<any>{
     return this.http.get(this.url + "starships/" + id + "/");
   }
 
-  getPilots(id) {
+  getPilots(id) : Observable<any>{
     return this.http.get(this.url + "people/" + id+ "/");
   }
 
-  getDetails(id: number) {
+  getDetails(id: number) : Observable<any>{
 
     return this.http.get(this.url + 'starships/' + id + '/')
       .pipe(
